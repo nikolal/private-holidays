@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import {
   View,
-  Text,
-  TouchableHighlight,
   Navigator,
-  TextInput,
   StyleSheet,
 } from 'react-native';
+
+import RegisterEmailInput from './RegisterEmailInput';
+import RegisterPasswordInput from './RegisterPasswordInput';
+import RegisterButton from './RegisterButton';
+import GoToHomeButton from './GoToHomeButton';
+import GoToLoginButton from './GoToLoginButton';
 
 
 export default class RegisterContainer extends Component {
@@ -18,19 +21,25 @@ export default class RegisterContainer extends Component {
     }
   }
 
+  onChangeEmailtext = (text) => {
+    this.setState({email: text});
+  }
+  onChangePasswordText = (text) => {
+    this.setState({password: text})
+  }
   register = () => {
     alert(this.state.email + ' ' + this.state.password);
   }
-  goToHome = (property) => {
-    this.props.navigator.push({
-      name: 'Home',
-      title: 'Home'
-    });
-  }
-  goToLogin = (property) => {
+  goToLogin = () => {
     this.props.navigator.push({
       name: 'Login',
       title: 'Login'
+    });
+  }
+  goToHome = () => {
+    this.props.navigator.push({
+      name: 'Home',
+      title: 'Home'
     });
   }
   rightButtonPress = () => {
@@ -40,43 +49,22 @@ export default class RegisterContainer extends Component {
   render(){
     return(
       <View style={styles.container}>
-        <TouchableHighlight
-          style={styles.button}
-          onPress={this.goToHome}>
-            <Text>
-              GO To Home
-            </Text>
-        </TouchableHighlight>
 
-        <TextInput
-          style={styles.input}
-          placeholder='Email'
-          autoCapitalize='none'
-          onChangeText={(text) => this.setState({email: text})}
+        <RegisterEmailInput
+          onChangeEmailText={this.onChangeEmailtext}
         />
-        <TextInput
-          style={styles.input}
-          placeholder='Password'
-          autoCapitalize='none'
-          secureTextEntry={true}
-          onChangeText={(text) => this.setState({password: text})}
+        <RegisterPasswordInput
+          onChangePasswordText={this.onChangePasswordText}
         />
-
-        <TouchableHighlight
-          style={styles.button}
-          onPress={this.register}>
-          <Text>
-            Register
-          </Text>
-        </TouchableHighlight>
-
-        <TouchableHighlight
-          style={styles.button}
-          onPress={this.goToLogin}>
-          <Text>
-            Go to Login
-          </Text>
-        </TouchableHighlight>
+        <RegisterButton
+          register={this.register}
+        />
+        <GoToLoginButton
+          goToLogin={this.goToLogin}
+        />
+        <GoToHomeButton
+          goToHome={this.goToHome}
+        />
 
       </View>
     )
@@ -84,26 +72,9 @@ export default class RegisterContainer extends Component {
 }
 
 const styles = StyleSheet.create({
-  item: {
-    flex: 1,
-    height: 200,
-    backgroundColor: 'silver',
-  },
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent:'center',
-    backgroundColor: 'silver'
-  },
-  input: {
-    margin: 15,
-    height: 40,
-    borderColor: 'blue',
-    borderWidth: 1
-  },
-  button: {
-    borderWidth: 1,
-    borderColor: 'blue',
-    padding: 10
   }
 });
