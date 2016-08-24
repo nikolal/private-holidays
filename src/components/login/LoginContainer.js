@@ -1,40 +1,37 @@
 import React, { Component } from 'react';
 import {
   View,
-  Text,
-  TouchableHighlight,
-  Navigator,
-  TextInput,
   StyleSheet,
+  TextInput,
+  Text,
+  TouchableHighlight
 } from 'react-native';
 
-
-export default class RegisterContainer extends Component {
+export default class LoginContainer extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
-        email: '',
-        password: ''
+      email: 'a@aaa.com',
+      password: 'aaa'
     }
   }
 
-  register = () => {
+  login = () => {
     alert(this.state.email + ' ' + this.state.password);
   }
-  goToHome = (property) => {
+
+  goToHome = () => {
     this.props.navigator.push({
       name: 'Home',
       title: 'Home'
     });
   }
-  goToLogin = (property) => {
+
+  goToRegister = () => {
     this.props.navigator.push({
-      name: 'Login',
-      title: 'Login'
+      name: 'Register',
+      title: 'Register'
     });
-  }
-  rightButtonPress = () => {
-    alert("Right Button Pressed");
   }
 
   render(){
@@ -44,7 +41,7 @@ export default class RegisterContainer extends Component {
           style={styles.button}
           onPress={this.goToHome}>
             <Text>
-              GO To Home
+              Go To Home
             </Text>
         </TouchableHighlight>
 
@@ -52,36 +49,40 @@ export default class RegisterContainer extends Component {
           style={styles.input}
           placeholder='Email'
           autoCapitalize='none'
+          defaultValue='a@aaa.com'
           onChangeText={(text) => this.setState({email: text})}
         />
         <TextInput
           style={styles.input}
           placeholder='Password'
           autoCapitalize='none'
+          defaultValue='aaa'
           secureTextEntry={true}
           onChangeText={(text) => this.setState({password: text})}
         />
 
         <TouchableHighlight
           style={styles.button}
-          onPress={this.register}>
+          onPress={this.login}>
           <Text>
-            Register
+            Login
           </Text>
         </TouchableHighlight>
 
         <TouchableHighlight
           style={styles.button}
-          onPress={this.goToLogin}>
+          onPress={this.goToRegister}>
           <Text>
-            Go to Login
+            Go to Register
           </Text>
         </TouchableHighlight>
 
       </View>
-    )
+    );
   }
+
 }
+
 
 const styles = StyleSheet.create({
   item: {
@@ -98,12 +99,12 @@ const styles = StyleSheet.create({
   input: {
     margin: 15,
     height: 40,
-    borderColor: 'blue',
+    borderColor: 'red',
     borderWidth: 1
   },
   button: {
     borderWidth: 1,
-    borderColor: 'blue',
+    borderColor: 'red',
     padding: 10
   }
 });

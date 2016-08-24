@@ -9,6 +9,7 @@ import {
 
 import HomeContainer from '../home/HomeContainer';
 import RegisterContainer from '../register/RegisterContainer';
+import LoginContainer from '../login/LoginContainer';
 
 
 export default class Router extends Component {
@@ -40,6 +41,14 @@ export default class Router extends Component {
     if(route.name == 'Register') {
       return (
         <RegisterContainer
+          navigator={ navigator }
+          {...route.passProps}
+        />
+      )
+    }
+    if(route.name == 'Login') {
+      return (
+        <LoginContainer
           navigator={ navigator }
           {...route.passProps}
         />
