@@ -3,10 +3,13 @@ import {
   View,
   Text,
   Navigator,
-  StyleSheet
+  StyleSheet,
+  TouchableOpacity
 } from 'react-native';
 
-import HomeContainer from '../home/HomeContainer'
+import HomeContainer from '../home/HomeContainer';
+import RegisterContainer from '../register/RegisterContainer';
+
 
 export default class Router extends Component {
   constructor(props){
@@ -15,7 +18,7 @@ export default class Router extends Component {
   render() {
     return (
       <Navigator
-        initialRoute={{ name: 'Home', title: 'Home' }}
+        initialRoute={{ name: 'Register', title: 'Register' }}
         renderScene={ this.renderScene }
         navigationBar={
           <Navigator.NavigationBar
@@ -29,6 +32,14 @@ export default class Router extends Component {
     if(route.name == 'Home') {
       return (
         <HomeContainer
+          navigator={ navigator }
+          {...route.passProps}
+        />
+      )
+    }
+    if(route.name == 'Register') {
+      return (
+        <RegisterContainer
           navigator={ navigator }
           {...route.passProps}
         />
