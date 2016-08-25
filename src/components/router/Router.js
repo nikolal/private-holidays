@@ -7,10 +7,16 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+import configureStore from '../../store/configureStore';
+import { Provider } from 'react-redux';
+import { loadItems } from '../../actions/itemActions';
+
 import HomeContainer from '../home/HomeContainer';
 import RegisterContainer from '../register/RegisterContainer';
 import LoginContainer from '../login/LoginContainer';
 
+const store = configureStore();
+store.dispatch(loadItems());
 
 export default class Router extends Component {
   constructor(props){
@@ -18,15 +24,17 @@ export default class Router extends Component {
   }
   render() {
     return (
-      <Navigator
-        initialRoute={{ name: 'Register', title: 'Register' }}
-        renderScene={ this.renderScene }
-        navigationBar={
-          <Navigator.NavigationBar
-            style={ styles.navigationBar }
-            routeMapper={ NavigationBarRouteMapper } />
-        }
-      />
+      <Provider store={store}>
+        <Navigator
+          initialRoute={{ name: 'Home', title: 'Home' }}
+          renderScene={ this.renderScene }
+          navigationBar={
+            <Navigator.NavigationBar
+              style={ styles.navigationBar }
+              routeMapper={ NavigationBarRouteMapper } />
+          }
+        />
+      </Provider>
     );
   }
   renderScene(route, navigator) {
