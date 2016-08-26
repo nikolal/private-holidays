@@ -28,6 +28,7 @@ export default HomeList = (props) => {
 
 const styles = StyleSheet.create ({
    container: {
+      flex: 1,
       marginTop: 50,
       height: 500,
       backgroundColor: 'silver'
