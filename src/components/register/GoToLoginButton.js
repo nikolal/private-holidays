@@ -20,6 +20,10 @@ const GoToLoginButton = (props) => {
 
 export default GoToLoginButton;
 
+GoToLoginButton.propTypes = {
+  goToLogin: React.PropTypes.func.isRequired
+}
+
 const styles = StyleSheet.create({
   button: {
     borderWidth: 1,

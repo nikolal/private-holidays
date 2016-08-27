@@ -20,6 +20,10 @@ const GoToRegisterButton = (props) => {
 
 export default GoToRegisterButton;
 
+GoToRegisterButton.propTypes = {
+  goToRegister: React.PropTypes.func.isRequired
+}
+
 const styles = StyleSheet.create({
   button: {
     borderWidth: 1,

@@ -20,6 +20,10 @@ const LoginButton = (props) => {
 
 export default LoginButton;
 
+LoginButton.propTypes = {
+  login: React.PropTypes.func.isRequired
+}
+
 const styles = StyleSheet.create({
   button: {
     borderWidth: 1,

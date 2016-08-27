@@ -54,13 +54,13 @@ export default class Router extends Component {
           >
           <Navigator
             ref="navigator"
-            initialRoute={{ name: 'Home', title: 'Home' }}
+            initialRoute={{ name: 'Login', title: 'Login' }}
             renderScene={ this.renderScene }
             navigationBar={
               <Navigator.NavigationBar
                 style={ styles.navigationBar }
-                toggleSideMenu={this.toggleSideMenu}
-                routeMapper={this.NavigationBarRouteMapper(this.toggleSideMenu)} />
+                routeMapper={this.NavigationBarRouteMapper(this.toggleSideMenu)}
+              />
             }
           />
         </SideMenu>
@@ -70,10 +70,9 @@ export default class Router extends Component {
   renderScene(route, navigator) {
     if(route.name == 'Home') {
       return (
-          <HomeContainer
-            navigator={ navigator }
-            {...route.passProps}
-          />
+        <HomeContainer
+          {...route.passProps}
+        />
       )
     }
     if(route.name == 'Register') {
@@ -94,18 +93,12 @@ export default class Router extends Component {
     }
     if(route.name == 'About') {
       return (
-          <AboutContainer
-            navigator={ navigator }
-            {...route.passProps}
-          />
+          <AboutContainer/>
       )
     }
     if(route.name == 'FAQ') {
       return (
-          <FaqContainer
-            navigator={ navigator }
-            {...route.passProps}
-          />
+          <FaqContainer/>
       )
     }
   }
@@ -119,7 +112,7 @@ export default class Router extends Component {
         return (
           <TouchableOpacity
             onPress={() => { if (index > 0) { navigator.pop() } }}>
-            <Text style={ styles.leftButton }>
+            <Text style={ styles.rightButton }>
               Back
             </Text>
           </TouchableOpacity>
@@ -131,8 +124,8 @@ export default class Router extends Component {
       return (
         <TouchableOpacity
           onPress={toggleSideMenu}>
-          <Text style={ styles.rightButton }>
-            { route.rightText || 'Menu' }
+          <Text style={ styles.leftButton }>
+            Menu
           </Text>
         </TouchableOpacity>
       )
@@ -146,42 +139,6 @@ export default class Router extends Component {
     }
   });
 }
-
-// const NavigationBarRouteMapper = {
-//   LeftButton(route, navigator, index, navState) {
-//     if(index > 0 && (
-//       route.name == 'About' ||
-//       route.name == 'FAQ'
-//     )) {
-//       return (
-//         <TouchableOpacity
-//           onPress={() => { if (index > 0) { navigator.pop() } }}>
-//           <Text style={ styles.leftButton }>
-//             Back
-//           </Text>
-//         </TouchableOpacity>
-//       )
-//     }
-//     else { return null }
-//   },
-//   RightButton(route, navigator, index, navState) {
-//     return (
-//       <TouchableOpacity
-//         onPress={this.toggleSideMenu}>
-//         <Text style={ styles.rightButton }>
-//           { route.rightText || 'Menu' }
-//         </Text>
-//       </TouchableOpacity>
-//     )
-//   },
-//   Title(route, navigator, index, navState) {
-//     return(
-//       <Text style={ styles.title }>
-//         {route.title}
-//       </Text>
-//     )
-//   }
-// };
 
 const styles = StyleSheet.create({
   navigationBar: {

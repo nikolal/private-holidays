@@ -11,8 +11,9 @@ export default class SideMenuContainer extends Component {
   constructor(props) {
     super(props);
   }
-  
+
   goToHome = () => {
+    console.log(this.props)
     this.props.navigate({
       name: 'Home',
       title: 'Home'
@@ -42,6 +43,10 @@ export default class SideMenuContainer extends Component {
       </View>
     );
   }
+}
+
+SideMenuContainer.propTypes = {
+  navigate: React.PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({

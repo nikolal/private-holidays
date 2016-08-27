@@ -18,6 +18,10 @@ const LoginEmailInput = (props) => {
 
 export default LoginEmailInput;
 
+LoginEmailInput.propTypes = {
+  onChangeEmailText: React.PropTypes.func.isRequired
+}
+
 const styles = StyleSheet.create({
   input: {
     margin: 15,

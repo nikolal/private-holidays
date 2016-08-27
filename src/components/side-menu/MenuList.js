@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
    View,
    Text,
    StyleSheet
-} from 'react-native'
+} from 'react-native';
 
 export default MenuList = (props) => {
     return (
@@ -25,6 +25,12 @@ export default MenuList = (props) => {
         </Text>
       </View>
    )
+}
+
+MenuList.propTypes = {
+  goToHome: React.PropTypes.func.isRequired,
+  goToAbout: React.PropTypes.func.isRequired,
+  goToFaq: React.PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create ({

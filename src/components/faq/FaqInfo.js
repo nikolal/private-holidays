@@ -22,7 +22,6 @@ export default SwitchExample = (props) => {
             <Text style={styles.text}>
               Fusce neque. Aenean vulputate eleifend tellus. Sed a libero. In consectetuer turpis ut velit. Vivamus euismod mauris. Proin faucibus arcu quis ante. Phasellus accumsan cursus velit. Vivamus laoreet. Praesent ut ligula non mi varius sagittis. Morbi vestibulum volutpat enim.
             </Text>
-            
      </View>
   )
 }

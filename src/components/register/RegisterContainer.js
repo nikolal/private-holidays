@@ -42,9 +42,6 @@ export default class RegisterContainer extends Component {
       title: 'Home'
     });
   }
-  rightButtonPress = () => {
-    alert("Right Button Pressed");
-  }
 
   render(){
     return(
@@ -71,10 +68,15 @@ export default class RegisterContainer extends Component {
   }
 }
 
+RegisterContainer.propTypes = {
+  navigator: React.PropTypes.object.isRequired
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent:'center',
+    backgroundColor: 'white'
   }
 });

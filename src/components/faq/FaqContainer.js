@@ -7,15 +7,16 @@ import FaqInfo from './FaqInfo';
 
 export default class FaqContainer extends Component {
 
-   constructor() {
-      super();
-   }
+  constructor() {
+    super();
+  }
 
-   render() {
-      return (
-        <ScrollView>
-      	  <FaqInfo/>
-        </ScrollView>
-      );
-   }
+  render() {
+    return (
+      <ScrollView>
+    	  <FaqInfo/>
+      </ScrollView>
+    );
+  }
+  
 }

@@ -20,6 +20,10 @@ const RegisterButton = (props) => {
 
 export default RegisterButton;
 
+RegisterButton.propTypes = {
+  register: React.PropTypes.func.isRequired
+}
+
 const styles = StyleSheet.create({
   button: {
     borderWidth: 1,

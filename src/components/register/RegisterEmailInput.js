@@ -18,6 +18,10 @@ const RegisterEmailInput = (props) => {
 
 export default RegisterEmailInput;
 
+RegisterEmailInput.propTypes = {
+  onChangeEmailText: React.PropTypes.func.isRequired
+}
+
 const styles = StyleSheet.create({
   input: {
     margin: 15,

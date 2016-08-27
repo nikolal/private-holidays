@@ -19,6 +19,10 @@ const RegisterPasswordInput = (props) => {
 
 export default RegisterPasswordInput;
 
+RegisterPasswordInput.propTypes = {
+  onChangePasswordText: React.PropTypes.func.isRequired
+}
+
 const styles = StyleSheet.create({
   input: {
     margin: 15,

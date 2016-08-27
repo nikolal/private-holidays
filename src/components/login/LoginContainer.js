@@ -73,6 +73,10 @@ export default class LoginContainer extends Component {
 
 }
 
+LoginContainer.propTypes = {
+  navigator: React.PropTypes.object.isRequired
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

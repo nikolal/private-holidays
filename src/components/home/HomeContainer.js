@@ -20,6 +20,11 @@ export default class HomeContainer extends Component {
   }
 }
 
+HomeContainer.propTypes = {
+  items: React.PropTypes.array.isRequired,
+  actions: React.PropTypes.object.isRequired
+}
+
 function mapStateToProps(state, ownProps) {
   return {
     items: state.items
