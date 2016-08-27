@@ -6,17 +6,23 @@ import {
 } from 'react-native'
 
 export default MenuList = (props) => {
-   return (
+    return (
       <View style={styles.container}>
-         <Text style={styles.text}>
+        <Text
+          style={styles.text}
+          onPress={props.goToHome}>
           Home
-         </Text>
-         <Text style={styles.text}>
+        </Text>
+        <Text
+          style={styles.text}
+          onPress={props.goToAbout}>
           About
-         </Text>
-         <Text style={styles.text}>
+        </Text>
+        <Text
+          style={styles.text}
+          onPress={props.goToFaq}>
           FAQ
-         </Text>
+        </Text>
       </View>
    )
 }

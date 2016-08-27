@@ -15,7 +15,7 @@ import HomeContainer from '../home/HomeContainer';
 import RegisterContainer from '../register/RegisterContainer';
 import LoginContainer from '../login/LoginContainer';
 import AboutContainer from '../about/AboutContainer';
-
+import FaqContainer from '../faq/FaqContainer';
 
 import SideMenuContainer from '../side-menu/SideMenuContainer';
 import SideMenu from 'react-native-side-menu';
@@ -27,19 +27,40 @@ store.dispatch(loadItems());
 export default class Router extends Component {
   constructor(props){
     super(props)
+    this.state = {
+      sideMenuOpened: false
+    };
   }
+
+  toggleSideMenu = () => {
+    this.setState({
+      sideMenuOpened: true
+    });
+  }
+
+  navigate = (route) => {
+    this.refs.navigator.push(route);
+    this.setState({
+      sideMenuOpened: false
+    });
+  }
+
   render() {
-    const menu = <SideMenuContainer navigator={navigator}/>;
+    const menu = <SideMenuContainer navigate={this.navigate}/>;
     return (
       <Provider store={store}>
-        <SideMenu menu={menu}>
+        <SideMenu menu={menu}
+          isOpen={this.state.sideMenuOpened}
+          >
           <Navigator
-            initialRoute={{ name: 'About', title: 'About' }}
+            ref="navigator"
+            initialRoute={{ name: 'Home', title: 'Home' }}
             renderScene={ this.renderScene }
             navigationBar={
               <Navigator.NavigationBar
                 style={ styles.navigationBar }
-                routeMapper={ NavigationBarRouteMapper } />
+                toggleSideMenu={this.toggleSideMenu}
+                routeMapper={this.NavigationBarRouteMapper(this.toggleSideMenu)} />
             }
           />
         </SideMenu>
@@ -49,10 +70,10 @@ export default class Router extends Component {
   renderScene(route, navigator) {
     if(route.name == 'Home') {
       return (
-        <HomeContainer
-          navigator={ navigator }
-          {...route.passProps}
-        />
+          <HomeContainer
+            navigator={ navigator }
+            {...route.passProps}
+          />
       )
     }
     if(route.name == 'Register') {
@@ -73,47 +94,94 @@ export default class Router extends Component {
     }
     if(route.name == 'About') {
       return (
-        <AboutContainer
-          navigator={ navigator }
-          {...route.passProps}
-        />
+          <AboutContainer
+            navigator={ navigator }
+            {...route.passProps}
+          />
+      )
+    }
+    if(route.name == 'FAQ') {
+      return (
+          <FaqContainer
+            navigator={ navigator }
+            {...route.passProps}
+          />
       )
     }
   }
-}
 
-var NavigationBarRouteMapper = {
-  LeftButton(route, navigator, index, navState) {
-    if(index > 0) {
+  NavigationBarRouteMapper = (toggleSideMenu) => ({
+    RightButton(route, navigator, index, navState) {
+      if(index > 0 && (
+        route.name == 'About' ||
+        route.name == 'FAQ'
+      )) {
+        return (
+          <TouchableOpacity
+            onPress={() => { if (index > 0) { navigator.pop() } }}>
+            <Text style={ styles.leftButton }>
+              Back
+            </Text>
+          </TouchableOpacity>
+        )
+      }
+      else { return null }
+    },
+    LeftButton(route, navigator, index, navState) {
       return (
         <TouchableOpacity
-          onPress={() => { if (index > 0) { navigator.pop() } }}>
-          <Text style={ styles.leftButton }>
-            Back
+          onPress={toggleSideMenu}>
+          <Text style={ styles.rightButton }>
+            { route.rightText || 'Menu' }
           </Text>
         </TouchableOpacity>
       )
-    }
-    else { return null }
-  },
-  RightButton(route, navigator, index, navState) {
-    if (route.onPress) return (
-      <TouchableHighlight
-        onPress={ () => route.onPress() }>
-        <Text style={ styles.rightButton }>
-          { route.rightText || 'Right Button' }
+    },
+    Title(route, navigator, index, navState) {
+      return(
+        <Text style={ styles.title }>
+          {route.title}
         </Text>
-      </TouchableHighlight>
-    )
-  },
-  Title(route, navigator, index, navState) {
-    return(
-      <Text style={ styles.title }>
-        {route.title}
-      </Text>
-    )
-  }
-};
+      )
+    }
+  });
+}
+
+// const NavigationBarRouteMapper = {
+//   LeftButton(route, navigator, index, navState) {
+//     if(index > 0 && (
+//       route.name == 'About' ||
+//       route.name == 'FAQ'
+//     )) {
+//       return (
+//         <TouchableOpacity
+//           onPress={() => { if (index > 0) { navigator.pop() } }}>
+//           <Text style={ styles.leftButton }>
+//             Back
+//           </Text>
+//         </TouchableOpacity>
+//       )
+//     }
+//     else { return null }
+//   },
+//   RightButton(route, navigator, index, navState) {
+//     return (
+//       <TouchableOpacity
+//         onPress={this.toggleSideMenu}>
+//         <Text style={ styles.rightButton }>
+//           { route.rightText || 'Menu' }
+//         </Text>
+//       </TouchableOpacity>
+//     )
+//   },
+//   Title(route, navigator, index, navState) {
+//     return(
+//       <Text style={ styles.title }>
+//         {route.title}
+//       </Text>
+//     )
+//   }
+// };
 
 const styles = StyleSheet.create({
   navigationBar: {
