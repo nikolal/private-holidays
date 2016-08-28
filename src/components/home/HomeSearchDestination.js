@@ -12,7 +12,7 @@ const HomeSearchDestination = (props) => {
       style={styles.input}
       placeholder='Search Destination'
       autoCapitalize='none'
-      onChangeDestinationText={props.onChangeDestinationText}
+      onChangeText={props.onDestinationChange}
     />
   )
 }
@@ -20,7 +20,7 @@ const HomeSearchDestination = (props) => {
 export default HomeSearchDestination;
 
 HomeSearchDestination.propTypes = {
-  onChangeDestinationText: React.PropTypes.func.isRequired
+  onDestinationChange: React.PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({

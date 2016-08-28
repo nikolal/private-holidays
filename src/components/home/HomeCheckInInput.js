@@ -29,7 +29,7 @@ const HomeCheckInInput = (props) => {
           marginLeft: 36
         }
       }}
-      onDateChange={props.onChangeCheckInDate}
+      onDateChange={props.onCheckInDateChange}
     />
   )
 }
@@ -38,7 +38,7 @@ export default HomeCheckInInput;
 
 HomeCheckInInput.propTypes = {
   checkInDate: React.PropTypes.string.isRequired,
-  onChangeCheckInDate: React.PropTypes.func.isRequired
+  onCheckInDateChange: React.PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({

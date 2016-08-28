@@ -12,6 +12,8 @@ import HomeList from './HomeList';
 import HomeSearchDestination from './HomeSearchDestination';
 import HomeCheckInInput from './HomeCheckInInput';
 import HomeCheckOutInput from './HomeCheckOutInput';
+import HomeGuestsPicker from './HomeGuestsPicker';
+import HomeSubmitButton from './HomeSubmitButton';
 
 export default class HomeContainer extends Component {
   constructor(props){
@@ -19,42 +21,63 @@ export default class HomeContainer extends Component {
     this.state = {
       destinationName: '',
       checkInDate: '',
-      checkOutDate: ''
+      checkOutDate: '',
+      guestsNumber: ''
     }
   }
 
-  onChangeDestinationText = (text) => {
+  onDestinationChange = (text) => {
     this.setState({
       destinationName: text
     })
   }
-  onChangeCheckInDate = (date) => {
+  onCheckInDateChange = (date) => {
     this.setState({
       checkInDate: date
     })
   }
-  onChangeCheckOutDate = (date) => {
+  onCheckOutDateChange = (date) => {
     this.setState({
       checkOutDate: date
     })
+  }
+  onGuestsNumberChange = (number) => {
+    this.setState({
+      guestsNumber: number
+    })
+  }
+  onSearchSubmit = () => {
+    alert(
+      'destinationName: ' + this.state.destinationName + ' ' +
+      'checkInDate: ' + this.state.checkInDate + ' ' +
+      'checkOutDate: ' + this.state.checkOutDate + ' ' +
+      'guestsNumber: ' + this.state.guestsNumber + ' '
+    )
   }
 
   render(){
     return (
       <View style={styles.container}>
         <HomeSearchDestination
-          onChangeDestinationText={this.onChangeDestinationText}
+          onDestinationChange={this.onDestinationChange}
         />
         <HomeCheckInInput
           checkInDate={this.state.checkInDate}
-          onChangeCheckInDate={this.onChangeCheckInDate}
+          onCheckInDateChange={this.onCheckInDateChange}
         />
         <HomeCheckOutInput
           checkOutDate={this.state.checkOutDate}
-          onChangeCheckOutDate={this.onChangeCheckOutDate}
+          onCheckOutDateChange={this.onCheckOutDateChange}
+        />
+        <HomeGuestsPicker
+          guestsNumber={this.state.guestsNumber}
+          onGuestsNumberChange={this.onGuestsNumberChange}
+        />
+        <HomeSubmitButton
+          onSearchSubmit={this.onSearchSubmit}
         />
         <HomeList
-          items = {this.props.items}
+          items={this.props.items}
         />
       </View>
     );
@@ -69,6 +92,7 @@ HomeContainer.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: 'center',
     backgroundColor: '#ffffff'
   }
 })
