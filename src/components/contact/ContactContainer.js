@@ -8,6 +8,7 @@ import ContactHeaderText from './ContactHeaderText';
 import ContactInfo from './ContactInfo';
 import ContactUserInfoInputs from './ContactUserInfoInputs';
 import ContactDestinationInfoInputs from './ContactDestinationInfoInputs';
+import ContactSubmitButton from './ContactSubmitButton';
 
 export default class ContactContainer extends Component {
   constructor() {
@@ -64,6 +65,18 @@ export default class ContactContainer extends Component {
       maximalPrice: text
     })
   }
+  onContactDataSubmit = () => {
+    alert(
+      'firstName: ' + this.state.firstName + ' ' +
+      'lastName: ' + this.state.lastName + ' ' +
+      'email: ' + this.state.email + ' ' +
+      'phoneNumber: ' + this.state.phoneNumber + ' ' +
+      'destinationName: ' + this.state.destinationName + ' ' +
+      'month: ' + this.state.month + ' ' +
+      'minimalPrice: ' + this.state.minimalPrice + ' ' +
+      'maximalPrice: ' + this.state.maximalPrice + ' '
+    )
+  }
 
   render(){
     return(
@@ -81,6 +94,9 @@ export default class ContactContainer extends Component {
           onMonthChange={this.onMonthChange}
           onMinimalPriceChange={this.onMinimalPriceChange}
           onMaximalPriceChange={this.onMaximalPriceChange}
+        />
+        <ContactSubmitButton
+          onContactDataSubmit={this.onContactDataSubmit}
         />
       </ScrollView>
     )

@@ -13,7 +13,7 @@ const ContactDestinationInfoInputs = (props) => {
       <Text>
         Destination Info:
       </Text>
-      
+
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -33,14 +33,14 @@ const ContactDestinationInfoInputs = (props) => {
           placeholder='Minimal price'
           keyboardType="numeric"
           autoCapitalize='none'
-          onChangeText={props.onPriceRangeChange}
+          onChangeText={props.onMinimalPriceChange}
         />
         <TextInput
           style={styles.input}
           keyboardType="numeric"
           placeholder='Maximal price'
           autoCapitalize='none'
-          onChangeText={props.onPriceRangeChange}
+          onChangeText={props.onMaximalPriceChange}
         />
       </View>
     </View>
