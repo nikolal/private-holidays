@@ -38,6 +38,22 @@ export default MenuList = (props) => {
           </Text>
         </TouchableOpacity>
 
+        <TouchableOpacity
+          onPress={props.goToOffers}
+        >
+          <Text style={styles.text}>
+            Offers
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={props.goToProfile}
+        >
+          <Text style={styles.text}>
+            Profile
+          </Text>
+        </TouchableOpacity>
+
       </View>
    )
 }

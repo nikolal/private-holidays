@@ -36,6 +36,18 @@ export default class SideMenuContainer extends Component {
       title: 'FAQ'
     });
   }
+  goToOffers = () => {
+    this.props.navigate({
+      name: 'Offers',
+      title: 'Offers'
+    });
+  }
+  goToProfile = () => {
+    this.props.navigate({
+      name: 'Profile',
+      title: 'Profile'
+    });
+  }
 
   render() {
     return (
@@ -45,6 +57,8 @@ export default class SideMenuContainer extends Component {
           goToAbout={this.goToAbout}
           goToFaq={this.goToFaq}
           goToContact={this.goToContact}
+          goToOffers={this.goToOffers}
+          goToProfile={this.goToProfile}
         />
       </View>
     );

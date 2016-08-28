@@ -17,6 +17,8 @@ import LoginContainer from '../login/LoginContainer';
 import AboutContainer from '../about/AboutContainer';
 import ContactContainer from '../contact/ContactContainer';
 import FaqContainer from '../faq/FaqContainer';
+import OffersContainer from '../faq/FaqContainer';
+import ProfileContainer from '../faq/FaqContainer';
 
 import SideMenuContainer from '../side-menu/SideMenuContainer';
 import SideMenu from 'react-native-side-menu';
@@ -55,7 +57,7 @@ export default class Router extends Component {
           >
           <Navigator
             ref="navigator"
-            initialRoute={{ name: 'Contact', title: 'Contact' }}
+            initialRoute={{ name: 'Home', title: 'Home' }}
             renderScene={ this.renderScene }
             navigationBar={
               <Navigator.NavigationBar
@@ -105,6 +107,16 @@ export default class Router extends Component {
     if(route.name == 'FAQ') {
       return (
           <FaqContainer/>
+      )
+    }
+    if(route.name == 'Offers') {
+      return (
+          <OffersContainer/>
+      )
+    }
+    if(route.name == 'Profile') {
+      return (
+          <ProfileContainer/>
       )
     }
   }
