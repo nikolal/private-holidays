@@ -55,7 +55,7 @@ export default class Router extends Component {
           >
           <Navigator
             ref="navigator"
-            initialRoute={{ name: 'Contact', title: 'Contact' }}
+            initialRoute={{ name: 'Home', title: 'Home' }}
             renderScene={ this.renderScene }
             navigationBar={
               <Navigator.NavigationBar

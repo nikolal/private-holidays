@@ -2,32 +2,42 @@ import React, { Component } from 'react';
 import {
    View,
    Text,
+   TouchableOpacity,
    StyleSheet
 } from 'react-native';
 
 export default MenuList = (props) => {
     return (
       <View style={styles.container}>
-        <Text
-          style={styles.text}
-          onPress={props.goToHome}>
-          Home
-        </Text>
-        <Text
-          style={styles.text}
-          onPress={props.goToAbout}>
-          About
-        </Text>
-        <Text
-          style={styles.text}
-          onPress={props.goToFaq}>
-          FAQ
-        </Text>
-        <Text
-          style={styles.text}
-          onPress={props.goToContact}>
-          Contact
-        </Text>
+
+        <TouchableOpacity onPress={props.goToHome}>
+          <Text style={styles.text}>
+            Home
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={props.goToAbout}>
+          <Text style={styles.text}>
+            About
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={props.goToFaq}
+        >
+          <Text style={styles.text}>
+            FAQ
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={props.goToContact}
+        >
+          <Text style={styles.text}>
+            Contact
+          </Text>
+        </TouchableOpacity>
+
       </View>
    )
 }
@@ -35,7 +45,8 @@ export default MenuList = (props) => {
 MenuList.propTypes = {
   goToHome: React.PropTypes.func.isRequired,
   goToAbout: React.PropTypes.func.isRequired,
-  goToFaq: React.PropTypes.func.isRequired
+  goToFaq: React.PropTypes.func.isRequired,
+  goToContact: React.PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create ({
@@ -43,8 +54,9 @@ const styles = StyleSheet.create ({
       paddingTop: 27
    },
    text: {
-      fontSize: 30,
+      fontSize: 20,
       fontWeight: 'bold',
       textAlign: 'center',
+      margin: 10
    }
 })
