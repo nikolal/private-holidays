@@ -13,7 +13,6 @@ export default class SideMenuContainer extends Component {
   }
 
   goToHome = () => {
-    console.log(this.props)
     this.props.navigate({
       name: 'Home',
       title: 'Home'
