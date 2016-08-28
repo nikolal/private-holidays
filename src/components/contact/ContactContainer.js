@@ -6,7 +6,8 @@ import {
 
 import ContactHeaderText from './ContactHeaderText';
 import ContactInfo from './ContactInfo';
-import ContactInfoInputs from './ContactInfoInputs';
+import ContactUserInfoInputs from './ContactUserInfoInputs';
+import ContactDestinationInfoInputs from './ContactDestinationInfoInputs';
 
 export default class ContactContainer extends Component {
   constructor() {
@@ -15,7 +16,11 @@ export default class ContactContainer extends Component {
       firstName: '',
       lastName: '',
       email: '',
-      phoneNumber: ''
+      phoneNumber: '',
+      destinationName: '',
+      month: '',
+      minimalPrice: '',
+      maximalPrice: ''
     }
   }
 
@@ -39,17 +44,43 @@ export default class ContactContainer extends Component {
       phoneNumber: text
     })
   }
+  onDestinationNameChange = (text) => {
+    this.setState({
+      destinationName: text
+    })
+  }
+  onMonthChange = (text) => {
+    this.setState({
+      month: text
+    })
+  }
+  onMinimalPriceChange = (text) => {
+    this.setState({
+      minimalPrice: text
+    })
+  }
+  onMaximalPriceChange = (text) => {
+    this.setState({
+      maximalPrice: text
+    })
+  }
 
   render(){
     return(
       <ScrollView style={styles.container}>
         <ContactHeaderText />
         <ContactInfo />
-        <ContactInfoInputs
+        <ContactUserInfoInputs
           onFirstNameChange={this.onFirstNameChange}
           onLastNameChange={this.onLastNameChange}
           onEmailChange={this.onEmailChange}
           onPhoneNumberChange={this.onPhoneNumberChange}
+        />
+        <ContactDestinationInfoInputs
+          onDestinationNameChange={this.onDestinationNameChange}
+          onMonthChange={this.onMonthChange}
+          onMinimalPriceChange={this.onMinimalPriceChange}
+          onMaximalPriceChange={this.onMaximalPriceChange}
         />
       </ScrollView>
     )

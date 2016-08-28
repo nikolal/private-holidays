@@ -6,10 +6,14 @@ import {
   Text
 } from 'react-native';
 
-const ContactInfoInputs = (props) => {
+const ContactUserInfoInputs = (props) => {
   return(
     <View style={styles.container}>
 
+      <Text>
+        User Info:
+      </Text>
+      
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -42,9 +46,9 @@ const ContactInfoInputs = (props) => {
   )
 }
 
-export default ContactInfoInputs;
+export default ContactUserInfoInputs;
 
-ContactInfoInputs.propTypes = {
+ContactUserInfoInputs.propTypes = {
   onFirstNameChange: React.PropTypes.func.isRequired,
   onLastNameChange: React.PropTypes.func.isRequired,
   onEmailChange: React.PropTypes.func.isRequired,
