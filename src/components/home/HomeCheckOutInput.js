@@ -6,13 +6,13 @@ import {
 
 import DatePicker from 'react-native-datepicker';
 
-const HomeCheckInInput = (props) => {
+const HomeCheckOutInput = (props) => {
   return(
     <DatePicker
       style={styles.datePicker}
-      date={props.checkInDate}
+      date={props.checkOutDate}
       mode="date"
-      placeholder="Check In date"
+      placeholder="Check Out date"
       format="YYYY-MM-DD"
       minDate="2016-01-01"
       maxDate="2020-01-01"
@@ -29,16 +29,16 @@ const HomeCheckInInput = (props) => {
           marginLeft: 36
         }
       }}
-      onDateChange={props.onChangeCheckInDate}
+      onDateChange={props.onChangeCheckOutDate}
     />
   )
 }
 
-export default HomeCheckInInput;
+export default HomeCheckOutInput;
 
-HomeCheckInInput.propTypes = {
-  checkInDate: React.PropTypes.string.isRequired,
-  onChangeCheckInDate: React.PropTypes.func.isRequired
+HomeCheckOutInput.propTypes = {
+  checkOutDate: React.PropTypes.string.isRequired,
+  onChangeCheckOutDate: React.PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({
