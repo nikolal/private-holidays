@@ -29,4 +29,4 @@ const styles = StyleSheet.create({
     borderColor: 'red',
     borderWidth: 1
   }
-})
+});

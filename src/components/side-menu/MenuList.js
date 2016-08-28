@@ -23,6 +23,11 @@ export default MenuList = (props) => {
           onPress={props.goToFaq}>
           FAQ
         </Text>
+        <Text
+          style={styles.text}
+          onPress={props.goToContact}>
+          Contact
+        </Text>
       </View>
    )
 }

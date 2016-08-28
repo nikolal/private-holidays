@@ -15,6 +15,7 @@ import HomeContainer from '../home/HomeContainer';
 import RegisterContainer from '../register/RegisterContainer';
 import LoginContainer from '../login/LoginContainer';
 import AboutContainer from '../about/AboutContainer';
+import ContactContainer from '../contact/ContactContainer';
 import FaqContainer from '../faq/FaqContainer';
 
 import SideMenuContainer from '../side-menu/SideMenuContainer';
@@ -54,7 +55,7 @@ export default class Router extends Component {
           >
           <Navigator
             ref="navigator"
-            initialRoute={{ name: 'Home', title: 'Home' }}
+            initialRoute={{ name: 'Contact', title: 'Contact' }}
             renderScene={ this.renderScene }
             navigationBar={
               <Navigator.NavigationBar
@@ -89,6 +90,11 @@ export default class Router extends Component {
           navigator={ navigator }
           {...route.passProps}
         />
+      )
+    }
+    if(route.name == 'Contact') {
+      return (
+          <ContactContainer/>
       )
     }
     if(route.name == 'About') {

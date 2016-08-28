@@ -24,6 +24,12 @@ export default class SideMenuContainer extends Component {
       title: 'About'
     });
   }
+  goToContact = () => {
+    this.props.navigate({
+      name: 'Contact',
+      title: 'Contact'
+    });
+  }
   goToFaq = () => {
     this.props.navigate({
       name: 'FAQ',
@@ -38,6 +44,7 @@ export default class SideMenuContainer extends Component {
           goToHome={this.goToHome}
           goToAbout={this.goToAbout}
           goToFaq={this.goToFaq}
+          goToContact={this.goToContact}
         />
       </View>
     );
