@@ -1,23 +1,23 @@
 const items = [
   {
     id: 1,
-    title: "Item 1",
-    body: "Goa"
+    name: "The Caramba Villa",
   },
   {
     id: 2,
-    title: "Item 2",
-    body: "Dubai"
+    name: "Olive Garden",
   },
   {
     id: 3,
-    title: "Item 3",
-    body: "Bangkok"
+    name: 'Dubai'
   },
   {
     id: 4,
-    title: "Item 4",
-    body: "Hongkong..."
+    name: "Hongkong"
+  },
+  {
+    id: 5,
+    name: "Goa"
   }
 ];
 

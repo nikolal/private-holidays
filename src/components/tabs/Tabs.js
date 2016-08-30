@@ -23,11 +23,11 @@ import FavoritesContainer from './favorites/FavoritesContainer';
       <ExperienceContainer
         tabLabel="Experience"
       />
-      <ProfileContainer
-        tabLabel="Profile"
-      />
       <FavoritesContainer
         tabLabel="Favorites"
+      />
+      <ProfileContainer
+        tabLabel="Profile"
       />
     </ScrollableTabView>
   )
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ffffff',
   }
-})
+});

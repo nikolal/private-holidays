@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 
 export default HomeList = (props) => {
-  // console.log(props)
+  console.log(props)
    const createItem = (item) => (
       <Text
          key={item.id}
@@ -40,4 +40,4 @@ const styles = StyleSheet.create ({
       borderColor: 'green',
       borderWidth: 1
    }
-})
+});

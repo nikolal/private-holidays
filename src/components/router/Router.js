@@ -51,7 +51,6 @@ export default class Router extends Component {
   }
 
   hideNavigationBar = () => {
-    console.log('aaa')
     this.setState({
       navigationBar: false
     });
