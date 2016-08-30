@@ -11,7 +11,7 @@ const ProfileFirstNameInput = (props) => {
       style={styles.input}
       placeholder='Username'
       autoCapitalize='none'
-      onChangeText={props.onChangeUsername}
+      onChangeText={props.onFirstNameChange}
     />
   )
 }
@@ -19,7 +19,7 @@ const ProfileFirstNameInput = (props) => {
 export default ProfileFirstNameInput;
 
 ProfileFirstNameInput.propTypes = {
-  onChangeUserNameext: React.PropTypes.func.isRequired
+  onFirstNameChange: React.PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({

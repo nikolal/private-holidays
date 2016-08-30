@@ -6,7 +6,7 @@ import {
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as itemActions from '../../actions/itemActions';
+import * as itemActions from '../../../actions/itemActions';
 
 import HomeList from './HomeList';
 import HomeSearchDestination from './HomeSearchDestination';
@@ -54,6 +54,9 @@ export default class HomeContainer extends Component {
       'guestsNumber: ' + this.state.guestsNumber + ' '
     )
   }
+  componentWillMount = () => {
+    this.props.hideNavigationBar();
+  }
 
   render(){
     return (
@@ -90,7 +93,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#ffffff'
+    backgroundColor: '#ffffff',
   }
 })
 

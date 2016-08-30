@@ -11,18 +11,19 @@ import configureStore from '../../store/configureStore';
 import { Provider } from 'react-redux';
 import { loadItems } from '../../actions/itemActions';
 
-import HomeContainer from '../home/HomeContainer';
+// import HomeContainer from '../home/HomeContainer';
 import RegisterContainer from '../register/RegisterContainer';
 import LoginContainer from '../login/LoginContainer';
 import AboutContainer from '../about/AboutContainer';
 import ContactContainer from '../contact/ContactContainer';
 import FaqContainer from '../faq/FaqContainer';
-import OffersContainer from '../faq/FaqContainer';
-import ProfileContainer from '../faq/FaqContainer';
+// import OffersContainer from '../offers/OffersContainer';
+// import ProfileContainer from '../faq/FaqContainer';
 
 import SideMenuContainer from '../side-menu/SideMenuContainer';
 import SideMenu from 'react-native-side-menu';
 
+import Tabs from '../tabs/Tabs';
 
 const store = configureStore();
 store.dispatch(loadItems());
@@ -31,7 +32,8 @@ export default class Router extends Component {
   constructor(props){
     super(props)
     this.state = {
-      sideMenuOpened: false
+      sideMenuOpened: false,
+      navigationBar: true
     };
   }
 
@@ -48,32 +50,48 @@ export default class Router extends Component {
     });
   }
 
+  hideNavigationBar = () => {
+    console.log('aaa')
+    this.setState({
+      navigationBar: false
+    });
+  }
+  showNavigationBar = () => {
+    console.log('bbb')
+    this.setState({
+      navigationBar: true
+    });
+  }
+
   render() {
     const menu = <SideMenuContainer navigate={this.navigate}/>;
     return (
       <Provider store={store}>
-        <SideMenu menu={menu}
+        <SideMenu
+          menu={menu}
           isOpen={this.state.sideMenuOpened}
-          >
+        >
           <Navigator
             ref="navigator"
-            initialRoute={{ name: 'Home', title: 'Home' }}
+            initialRoute={{ name: 'Tabs', title: '' }}
             renderScene={ this.renderScene }
             navigationBar={
-              <Navigator.NavigationBar
-                style={ styles.navigationBar }
+              this.state.navigationBar == true ? <Navigator.NavigationBar
+                style={styles.navigationBar}
                 routeMapper={this.NavigationBarRouteMapper(this.toggleSideMenu)}
-              />
+              /> : null
             }
           />
         </SideMenu>
       </Provider>
     );
   }
-  renderScene(route, navigator) {
-    if(route.name == 'Home') {
+  renderScene = (route, navigator) => {
+    if(route.name == 'Tabs') {
       return (
-        <HomeContainer
+        <Tabs
+          hideNavigationBar={this.hideNavigationBar}
+          showNavigationBar={this.showNavigationBar}
           {...route.passProps}
         />
       )
@@ -109,18 +127,7 @@ export default class Router extends Component {
           <FaqContainer/>
       )
     }
-    if(route.name == 'Offers') {
-      return (
-          <OffersContainer/>
-      )
-    }
-    if(route.name == 'Profile') {
-      return (
-          <ProfileContainer/>
-      )
-    }
   }
-
   NavigationBarRouteMapper = (toggleSideMenu) => ({
     RightButton(route, navigator, index, navState) {
       if(index > 0 && (
@@ -162,6 +169,9 @@ const styles = StyleSheet.create({
   navigationBar: {
     backgroundColor: '#246dd5',
   },
+  navigationBarHidden: {
+    backgroundColor: 'red'
+  },
   leftButton: {
     color: '#ffffff',
     margin: 10,
@@ -178,4 +188,4 @@ const styles = StyleSheet.create({
     margin: 10,
     fontSize: 16
   }
-})
+});

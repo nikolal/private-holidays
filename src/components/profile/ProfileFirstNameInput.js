@@ -5,21 +5,21 @@ import {
   StyleSheet
 } from 'react-native';
 
-const ProfileLastNameInput = (props) => {
+const ProfileFirstNameInput = (props) => {
   return (
     <TextInput
       style={styles.input}
       placeholder='Username'
       autoCapitalize='none'
-      onChangeText={props.onChangeUsername}
+      onChangeText={props.onFirstNameChange}
     />
   )
 }
 
-export default ProfileLastNameInput;
+export default ProfileFirstNameInput;
 
-ProfileLastNameInput.propTypes = {
-  onChangeUserNameext: React.PropTypes.func.isRequired
+ProfileFirstNameInput.propTypes = {
+  onFirstNameChange: React.PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({
