@@ -10,7 +10,7 @@ import ProfileContainer from './profile/ProfileContainer';
 import ExperienceContainer from './experience/ExperienceContainer';
 import FavoritesContainer from './favorites/FavoritesContainer';
 
- const Tabs = (props) => {
+const Tabs = (props) => {
   return(
     <ScrollableTabView
       style={styles.container}
@@ -34,6 +34,10 @@ import FavoritesContainer from './favorites/FavoritesContainer';
 }
 
 export default Tabs;
+
+Tabs.propTypes = {
+  hideNavigationBar: React.PropTypes.func.isRequired
+}
 
 const styles = StyleSheet.create({
   container: {

@@ -4,9 +4,9 @@ import {
   StyleSheet
 } from 'react-native';
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as itemActions from '../../../actions/itemActions';
+// import { connect } from 'react-redux';
+// import { bindActionCreators } from 'redux';
+// import * as itemActions from '../../../actions/itemActions';
 
 import HomeList from './HomeList';
 import HomeSearchDestination from './HomeSearchDestination';
@@ -85,8 +85,8 @@ export default class HomeContainer extends Component {
 }
 
 HomeContainer.propTypes = {
-  items: React.PropTypes.array.isRequired,
-  actions: React.PropTypes.object.isRequired
+  // items: React.PropTypes.array,
+  // actions: React.PropTypes.object.isRequired
 }
 
 const styles = StyleSheet.create({
@@ -97,16 +97,17 @@ const styles = StyleSheet.create({
   }
 })
 
-function mapStateToProps(state, ownProps) {
-  return {
-    items: state.items
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(itemActions, dispatch)
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
+// function mapStateToProps(state, ownProps) {
+//   console.log(state.items)
+//   return {
+//     items: state.items,
+//   };
+// }
+//
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     actions: bindActionCreators(itemActions, dispatch)
+//   };
+// }
+//
+// export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);

@@ -4,6 +4,8 @@ import {
   StyleSheet
 } from 'react-native';
 
+import debounce from 'lodash.debounce';
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as itemActions from '../../../actions/itemActions';
@@ -13,14 +15,14 @@ import ExperienceList from './ExperienceList';
 
 export default class ExperienceContainer extends Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.onDestinationChange = debounce(this.onDestinationChange, 600);
   }
 
-  onDestinationChange = (text) => {
-    alert(
-      'Searching...  ' + text
-    )
+  onDestinationChange = (searchText) => {
+    this.props.actions.filterItems(searchText);
   }
+
   render(){
     return(
       <View style={styles.container}>
@@ -36,7 +38,9 @@ export default class ExperienceContainer extends Component {
 }
 
 ExperienceContainer.propTypes = {
-  items: React.PropTypes.array.isRequired
+  items: React.PropTypes.array.isRequired,
+  searchText: React.PropTypes.string.isRequired,
+  actions: React.PropTypes.object.isRequired
 }
 
 const styles = StyleSheet.create({
@@ -47,8 +51,10 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state, ownProps) {
+  let filteredItems = state.items.items.filter((item) => item.name.toLowerCase().indexOf(state.items.searchText) >= 0);
   return {
-    items: state.items
+    searchText: state.items.searchText,
+    items: filteredItems
   };
 }
 

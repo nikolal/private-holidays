@@ -11,14 +11,11 @@ import configureStore from '../../store/configureStore';
 import { Provider } from 'react-redux';
 import { loadItems } from '../../actions/itemActions';
 
-// import HomeContainer from '../home/HomeContainer';
 import RegisterContainer from '../register/RegisterContainer';
 import LoginContainer from '../login/LoginContainer';
 import AboutContainer from '../about/AboutContainer';
 import ContactContainer from '../contact/ContactContainer';
 import FaqContainer from '../faq/FaqContainer';
-// import OffersContainer from '../offers/OffersContainer';
-// import ProfileContainer from '../faq/FaqContainer';
 
 import SideMenuContainer from '../side-menu/SideMenuContainer';
 import SideMenu from 'react-native-side-menu';

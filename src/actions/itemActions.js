@@ -2,23 +2,30 @@ import * as types from './actionTypes';
 import itemApi from '../api/mockItemApi';
 import { beginAjaxCall, ajaxCallError } from './ajaxStatusActions';
 
-export function loadItemsSuccess(items) {
+// ACTION CREATORS
+
+export const loadItemsSuccess = (items) => {
   return { type: types.LOAD_ITEMS_SUCCESS, items};
 }
 
-export function createItemSuccess(item) {
+export const createItemSuccess = (item) => {
   return {type: types.CREATE_ITEM_SUCCESS, item};
 }
 
-export function deleteItemSuccess(item) {
+export const deleteItemSuccess = (item) => {
   return {type: types.DELETE_ITEM_SUCCESS, item};
 }
 
-export function loadItems() {
-  return function(dispatch) {
+export const filterItems = (searchText) => {
+  return {type: types.FILTER_ITEMS, searchText};
+}
+
+// ASYNC
+
+export const loadItems = () => {
+  return (dispatch) => {
     dispatch(beginAjaxCall());
     return itemApi.getAllItems().then(items => {
-      // console.log(items)
       dispatch(loadItemsSuccess(items));
     }).catch(error => {
       throw(error);
