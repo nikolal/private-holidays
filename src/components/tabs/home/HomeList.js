@@ -13,7 +13,7 @@ export default HomeList = (props) => {
       <Text
          key={item.id}
          style={styles.item}>
-         {item.body}
+         {item.name}
       </Text>
    )
 

@@ -4,80 +4,37 @@ import {
   StyleSheet
 } from 'react-native';
 
-// import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
-// import * as itemActions from '../../../actions/itemActions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as itemActions from '../../../actions/itemActions';
 
-import HomeList from './HomeList';
-import HomeSearchDestination from './HomeSearchDestination';
-import HomeCheckInInput from './HomeCheckInInput';
-import HomeCheckOutInput from './HomeCheckOutInput';
-import HomeGuestsPicker from './HomeGuestsPicker';
-import HomeSubmitButton from './HomeSubmitButton';
+import debounce from 'lodash.debounce';
+
+import HomeHeader from './HomeHeader';
+import HomeBody from './HomeBody';
 
 export default class HomeContainer extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      destinationName: '',
-      checkInDate: '',
-      checkOutDate: '',
-      guestsNumber: ''
-    }
+    this.onInternationalChange = debounce(this.onInternationalChange, 600);
   }
 
-  onDestinationChange = (text) => {
-    this.setState({
-      destinationName: text
-    })
-  }
-  onCheckInDateChange = (date) => {
-    this.setState({
-      checkInDate: date
-    })
-  }
-  onCheckOutDateChange = (date) => {
-    this.setState({
-      checkOutDate: date
-    })
-  }
-  onGuestsNumberChange = (number) => {
-    this.setState({
-      guestsNumber: number
-    })
-  }
-  onSearchSubmit = () => {
-    alert(
-      'destinationName: ' + this.state.destinationName + ' ' +
-      'checkInDate: ' + this.state.checkInDate + ' ' +
-      'checkOutDate: ' + this.state.checkOutDate + ' ' +
-      'guestsNumber: ' + this.state.guestsNumber + ' '
-    )
-  }
   componentWillMount = () => {
     this.props.hideNavigationBar();
+  }
+
+  onInternationalChange = (searchText) => {
+    this.props.actions.filterItems(searchText);
   }
 
   render(){
     return (
         <View>
-          <HomeSearchDestination
-            onDestinationChange={this.onDestinationChange}
+          <HomeHeader
+            onInternationalChange={this.onInternationalChange}
           />
-          <HomeCheckInInput
-            checkInDate={this.state.checkInDate}
-            onCheckInDateChange={this.onCheckInDateChange}
-          />
-          <HomeCheckOutInput
-            checkOutDate={this.state.checkOutDate}
-            onCheckOutDateChange={this.onCheckOutDateChange}
-          />
-          <HomeGuestsPicker
-            guestsNumber={this.state.guestsNumber}
-            onGuestsNumberChange={this.onGuestsNumberChange}
-          />
-          <HomeSubmitButton
-            onSearchSubmit={this.onSearchSubmit}
+          <HomeBody
+            items={this.props.items}
           />
         </View>
     );
@@ -97,17 +54,18 @@ const styles = StyleSheet.create({
   }
 })
 
-// function mapStateToProps(state, ownProps) {
-//   console.log(state.items)
-//   return {
-//     items: state.items,
-//   };
-// }
-//
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     actions: bindActionCreators(itemActions, dispatch)
-//   };
-// }
-//
-// export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
+function mapStateToProps(state, ownProps) {
+  let filteredItems = state.items.items.filter((item) => item.name.toLowerCase().indexOf(state.items.searchText) >= 0);
+  return {
+    searchText: state.items.searchText,
+    items: filteredItems
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(itemActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
