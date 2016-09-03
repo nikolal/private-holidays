@@ -66,10 +66,11 @@ export default class Router extends Component {
         <SideMenu
           menu={menu}
           isOpen={this.state.sideMenuOpened}
+          edgeHitWidth={0}
         >
           <Navigator
             ref="navigator"
-            initialRoute={{ name: 'Tabs', title: '' }}
+            initialRoute={{ name: 'Login', title: 'Login' }}
             renderScene={ this.renderScene }
             navigationBar={
               this.state.navigationBar == true ? <Navigator.NavigationBar

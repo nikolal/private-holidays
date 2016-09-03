@@ -5,6 +5,10 @@ import {
   StyleSheet,
 } from 'react-native';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as authActions from '../../actions/authActions';
+
 import RegisterEmailInput from './RegisterEmailInput';
 import RegisterPasswordInput from './RegisterPasswordInput';
 import RegisterButton from './RegisterButton';
@@ -28,6 +32,7 @@ export default class RegisterContainer extends Component {
     this.setState({password: text})
   }
   register = () => {
+    this.props.actions.signup(this.state.email, this.state.password);
     alert(this.state.email + ' ' + this.state.password);
   }
   goToLogin = () => {
@@ -80,3 +85,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   }
 });
+
+function mapStateToProps(state, ownProps) {
+  return {
+    user: 'aaa'
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(authActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterContainer);

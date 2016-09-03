@@ -7,6 +7,10 @@ import {
   TouchableHighlight
 } from 'react-native';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as authActions from '../../actions/authActions';
+
 import LoginEmailInput from './LoginEmailInput';
 import LoginPasswordInput from './LoginPasswordInput';
 import LoginButton from './LoginButton';
@@ -29,6 +33,7 @@ export default class LoginContainer extends Component {
     this.setState({password: text})
   }
   login = () => {
+    this.props.actions.login(this.state.email, this.state.password)
     alert(this.state.email + ' ' + this.state.password);
   }
   goToRegister = () => {
@@ -85,3 +90,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'silver'
   }
 });
+
+function mapStateToProps(state, ownProps) {
+  return {
+    user: 'aaa'
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(authActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);

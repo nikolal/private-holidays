@@ -33,7 +33,7 @@ const styles = StyleSheet.create ({
       justifyContent: 'center'
    },
    item: {
-      flex: 1,
+      // flex: 1,
       margin: 10,
       padding: 15,
       width: 160,
