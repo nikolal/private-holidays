@@ -10,14 +10,14 @@ export default function authReducer(state = initialState, action) {
 				username: 'guest',
 				// uid: null
 			};
-      case types.SIGNUP_SUCCESS:
-      console.log('REDUCER_SIGNUP')
-  			return {
-  				status: types.AUTH_LOGGED_IN,
-  				username: action.email,
-  				password: action.password,
-  				// uid: action.uid
-  			};
+    case types.SIGNUP_SUCCESS:
+    console.log('REDUCER_SIGNUP')
+			return {
+				status: types.AUTH_LOGGED_IN,
+				username: action.email,
+				password: action.password,
+				// uid: action.uid
+			};
 		case types.LOGIN_SUCCESS:
     console.log('REDUCER_LOGIN')
 			return {

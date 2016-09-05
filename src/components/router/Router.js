@@ -16,6 +16,7 @@ import LoginContainer from '../login/LoginContainer';
 import AboutContainer from '../about/AboutContainer';
 import ContactContainer from '../contact/ContactContainer';
 import FaqContainer from '../faq/FaqContainer';
+import ProfileContainer from '../profile/ProfileContainer';
 
 import SideMenuContainer from '../side-menu/SideMenuContainer';
 import SideMenu from 'react-native-side-menu';
@@ -122,6 +123,11 @@ export default class Router extends Component {
     if(route.name == 'FAQ') {
       return (
           <FaqContainer/>
+      )
+    }
+    if(route.name == 'Profile') {
+      return (
+          <ProfileContainer/>
       )
     }
   }

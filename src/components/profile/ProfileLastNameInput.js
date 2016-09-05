@@ -9,7 +9,7 @@ const ProfileLastNameInput = (props) => {
   return (
     <TextInput
       style={styles.input}
-      placeholder='Username'
+      placeholder='Last Name'
       autoCapitalize='none'
       onChangeText={props.onLastNameChange}
     />

@@ -74,7 +74,7 @@ export function login(email, password) {
 
 
 export const logoutUser = () => {
-	console.log('logout')
+	console.log('LOGOUT')
 	return (dispatch) => {
 		dispatch(logoutSuccess());
 	};

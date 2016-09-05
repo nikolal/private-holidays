@@ -54,6 +54,14 @@ export default MenuList = (props) => {
           </Text>
         </TouchableOpacity>
 
+        <TouchableOpacity
+          onPress={props.logout}
+        >
+          <Text style={styles.text}>
+            Logout
+          </Text>
+        </TouchableOpacity>
+
       </View>
    )
 }

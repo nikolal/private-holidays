@@ -9,7 +9,7 @@ const ProfilePhoneNumberInput = (props) => {
   return (
     <TextInput
       style={styles.input}
-      placeholder='Username'
+      placeholder='Phone Number'
       autoCapitalize='none'
       keyboardType="numeric"
       onChangeText={props.onPhoneNumberChange}

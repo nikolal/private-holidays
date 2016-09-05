@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state, ownProps) {
   return {
-    user: 'aaa'
+    currentUser: state.auth
   };
 }
 
